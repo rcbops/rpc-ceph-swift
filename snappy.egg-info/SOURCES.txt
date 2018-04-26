@@ -1,0 +1,6 @@
+README.md
+setup.py
+snappy.egg-info/PKG-INFO
+snappy.egg-info/SOURCES.txt
+snappy.egg-info/dependency_links.txt
+snappy.egg-info/top_level.txt
