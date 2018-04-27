@@ -15,7 +15,7 @@ limitations under the License.
 """
 
 import unittest
-from swift_composite import ObjectStorageComposite
+from snappy.swift_composite import ObjectStorageComposite
 
 
 class ObjectStorageUser(object):

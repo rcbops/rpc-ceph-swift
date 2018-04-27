@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from swift_fixtures import ObjectStorageFixture
+from snappy.fixtures.swift_fixtures import ObjectStorageFixture
 
 STATUS_CODE_MSG = ("{method} expected status code {expected}"
                    " received status code {received}")
