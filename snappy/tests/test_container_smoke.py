@@ -13,8 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from swift_fixtures import ObjectStorageFixture
-import randomstring as randstring
+from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+import snappy.tools.randomstring as randstring
 
 CONTENT_TYPE_TEXT = 'text/plain; charset=UTF-8'
 CONTAINER_NAME = 'container_smoke_test'

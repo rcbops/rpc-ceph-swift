@@ -21,7 +21,7 @@ from hashlib import md5
 from decorators import (
     DataDrivenFixture, data_driven_test)
 from constants import Constants
-from swift_fixtures import ObjectStorageFixture
+from snappy.fixtures.swift_fixtures import ObjectStorageFixture
 from generators import (ObjectDatasetList, CONTENT_TYPES)
 
 CONTAINER_DESCRIPTOR = 'object_smoke_test'

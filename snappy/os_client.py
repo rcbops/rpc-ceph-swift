@@ -24,10 +24,10 @@ from os.path import expanduser
 from time import time, mktime
 from urlparse import urlparse
 
-import randomstring as randstring
+from snappy.tools import randomstring as randstring
 from md5hash import get_md5_hash
 
-from responses import AccountContainersList, ContainerObjectsList, CreateArchiveObject
+from responses import AccountContainersList, ContainerObjectsList
 from deserialization_decorator import deserialize
 
 BULK_ARCHIVE_NAME = 'bulk_objects'
