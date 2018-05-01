@@ -18,7 +18,7 @@ import re
 
 # from cafe.common.reporting import cclogging
 from datasets import DatasetList
-from fixtures import BaseTestFixture
+from snappy.fixtures.swift_fixtures import ObjectStorageFixture
 from config import DriverConfig
 
 
@@ -111,7 +111,7 @@ class EmptyDSLError(Exception):
         super(EmptyDSLError, self).__init__(self.message)
 
 
-class _FauxDSLFixture(BaseTestFixture):
+class _FauxDSLFixture(ObjectStorageFixture):
     """Faux Test Fixture and Test class to inject into DDC that lack data."""
 
     dsl_namespace = None
