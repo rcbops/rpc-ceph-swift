@@ -18,11 +18,10 @@ import time
 import zlib
 from hashlib import md5
 
-from decorators import (
-    DataDrivenFixture, data_driven_test)
-from constants import Constants
+from snappy.decorators import (DataDrivenFixture, data_driven_test)
+from snappy.constants import Constants
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from generators import (ObjectDatasetList, CONTENT_TYPES)
+from snappy.generators import (ObjectDatasetList, CONTENT_TYPES)
 
 CONTAINER_DESCRIPTOR = 'object_smoke_test'
 STATUS_CODE_MSG = ('{method} expected status code {expected}'
