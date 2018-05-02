@@ -20,9 +20,17 @@ limitations under the License.
 # from cloudroast.objectstorage.fixtures import ObjectStorageFixture
 # from cloudroast.objectstorage.generators import ObjectDatasetList
 
-from swift_fixtures import ObjectStorageFixture
 
-# @DataDrivenFixture
+
+
+from snappy.decorators import (DataDrivenFixture, data_driven_test)
+from snappy.decorators import DataDrivenFixture
+from snappy.generators import ObjectDatasetList
+
+
+from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+
+@DataDrivenFixture
 class QuickTest(ObjectStorageFixture):
     def test_create_container(self):
         response = self.client.create_container('quick_test_container')
