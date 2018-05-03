@@ -1,6 +1,7 @@
 from snappy.decorators import (DataDrivenFixture, data_driven_test)
 from snappy.decorators import DataDrivenFixture
 from snappy.generators import ObjectDatasetList
+from snappy.constants import Constants
 
 
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
