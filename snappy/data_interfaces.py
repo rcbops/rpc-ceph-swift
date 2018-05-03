@@ -343,7 +343,7 @@ class ConfigSectionInterface(BaseConfigSectionInterface):
                         getattr(self, 'CONFIG_SECTION_NAME', None))
 
         config_file_path = config_file_path or _get_path_from_env(
-            'CAFE_CONFIG_FILE_PATH')
+            'TEST_CONFIG')
 
         super(ConfigSectionInterface, self).__init__(
             config_file_path, section_name)
