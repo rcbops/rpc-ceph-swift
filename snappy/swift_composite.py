@@ -7,6 +7,7 @@ import os
 
 from behest.client import HTTPClient
 
+
 class ObjectStorageComposite(object):
     """
     Handles authing and retrieving the storage_url and auth_token for
@@ -21,8 +22,6 @@ class ObjectStorageComposite(object):
             body = json.dumps(content)
             response = client.request("POST", url + '/v2.0/tokens', data=body, headers={'Content-type': 'application/json'})
 
-            print response
-
             return response
 
         config_file_path = os.environ['TEST_CONFIG']
@@ -34,8 +33,6 @@ class ObjectStorageComposite(object):
             config_file_path=config_file_path,
             section_name=UserConfig.SECTION_NAME)
 
-        #url = 'https://identity.api.rackspacecloud.com/v2.0/tokens'
-        #r = authenticate(url=url, username='dwnova', api_key='aab8017a4a644a0fa1972959b0f1b06f')
         r = authenticate(
             url=user_auth_config.auth_endpoint,
             username=user_config.username,
