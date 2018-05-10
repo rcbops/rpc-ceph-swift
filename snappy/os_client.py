@@ -18,11 +18,6 @@ from deserialization_decorator import deserialize
 BULK_ARCHIVE_NAME = 'bulk_objects'
 
 
-
-from behest.client import HTTPClient
-
-
-
 class ObjectStorageAPIClient(object):
 
     def __init__(self, storage_url, auth_token, base_container_name=None,
@@ -86,21 +81,14 @@ class ObjectStorageAPIClient(object):
         # Create the final parameters for the call to the base request()
         # Wherever a parameter is provided both by the calling method AND
         # the requests_lib kwargs dictionary, requestslib_kwargs "wins"
-        # requestslib_kwargs = dict({'headers': headers,
-        #                            'params': params,
-        #                            'verify': verify,
-        #                            'data': data},
-        #                           **requestslib_kwargs)
+        requestslib_kwargs = dict({'headers': headers,
+                                   'params': params,
+                                   'verify': verify,
+                                   'data': data},
+                                  **requestslib_kwargs)
 
-        # # Make the request
-        # return requests.request(method, url, **requestslib_kwargs)
-
-
-        drokk = {'headers': headers, 'params': params, 'verify': verify, 'data': data}
-
-        print "FOO: {}".format(headers)
-        client = HTTPClient()
-        return client.request(method, url, **drokk)
+        # Make the request
+        return requests.request(method, url, **requestslib_kwargs)
 
     def put(self, url, **kwargs):
         """ HTTP PUT request """
