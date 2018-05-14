@@ -18,4 +18,4 @@ def pytest_configure(config):
 
 
 def _set_config_file(config_path):
-    os.environ['TEST_CONFIG'] = os.path.join(ROOT_CONFIG_REPO, config_path)
+    os.environ['TEST_CONFIG'] = os.path.abspath(config_path)
