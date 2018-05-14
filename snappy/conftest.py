@@ -1,6 +1,5 @@
 import os
 
-ROOT_CONFIG_REPO = "/home/legionarius/Code/snappy_repos/configs"
 
 def pytest_addoption(parser):
     group = parser.getgroup('test-config')
