@@ -33,6 +33,8 @@ class ObjectStorageComposite(object):
             config_file_path=config_file_path,
             section_name=UserConfig.SECTION_NAME)
 
+        obj_storage_config = ObjectStorageConfig()
+
         r = authenticate(
             url=user_auth_config.auth_endpoint,
             username=user_config.username,
@@ -40,9 +42,10 @@ class ObjectStorageComposite(object):
 
         services = r.json()['access']['serviceCatalog']
 
-        swift_service = [service for service in services if service['name'] == 'cloudFiles']
+        swift_service = [service for service in services if service['name'] == obj_storage_config.identity_service_name]
         swift_service = swift_service[0]
-        swift_endpoint = [endpoint for endpoint in swift_service['endpoints'] if endpoint['region'] == 'DFW']
+        swift_endpoint = [endpoint for endpoint in swift_service['endpoints'] if endpoint['region'] == obj_storage_config.region]
+
         self.storage_url = swift_endpoint[0]['publicURL']
         self.auth_token =  r.json()['access']['token']['id']
 
