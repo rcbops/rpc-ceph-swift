@@ -1,4 +1,5 @@
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+import pytest
 
 STATUS_CODE_MSG = ("{method} expected status code {expected}"
                    " received status code {received}")
@@ -364,3 +365,7 @@ class AccountSmokeTest(ObjectStorageFixture):
             received,
             msg="'content-type' header value expected: {0} received:"
             " {1}".format(expected, received))
+
+    @pytest.mark.skip('Update Account Metadata Test Stub')
+    def test_update_account_metadata(self):
+        pass
