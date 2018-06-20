@@ -1,11 +1,11 @@
 from swift_behaviors import ObjectStorageAPI_Behaviors
 from os_client import ObjectStorageAPIClient
-from swift_config import ObjectStorageAPIConfig, ObjectStorageConfig, UserAuthConfig, UserConfig
+from swift_config import (ObjectStorageAPIConfig, ObjectStorageConfig,
+                          UserAuthConfig, UserConfig)
+from behest.client import HTTPClient
 
 import json
 import os
-
-from behest.client import HTTPClient
 
 
 class ObjectStorageComposite(object):
@@ -13,14 +13,24 @@ class ObjectStorageComposite(object):
     Handles authing and retrieving the storage_url and auth_token for
     storage objects.
     """
-
     def __init__(self):
-
         def authenticate(url, username, api_key):
             client = HTTPClient()
-            content = {"auth": {"RAX-KSKEY:apiKeyCredentials": {"username": username, "apiKey": api_key}}}
+            content = {
+                "auth": {
+                    "RAX-KSKEY:apiKeyCredentials": {
+                        "username": username,
+                        "apiKey": api_key
+                    }
+                }
+            }
+
             body = json.dumps(content)
-            response = client.request("POST", url + '/v2.0/tokens', data=body, headers={'Content-type': 'application/json'})
+            response = client.request(
+                "POST",
+                os.path.join(url, 'v2.0/tokens'),
+                data=body,
+                headers={'Content-type': 'application/json'})
 
             return response
 
@@ -34,6 +44,7 @@ class ObjectStorageComposite(object):
             section_name=UserConfig.SECTION_NAME)
 
         obj_storage_config = ObjectStorageConfig()
+        os_service_name = obj_storage_config.identity_service_name
 
         r = authenticate(
             url=user_auth_config.auth_endpoint,
@@ -42,9 +53,13 @@ class ObjectStorageComposite(object):
 
         services = r.json()['access']['serviceCatalog']
 
-        swift_service = [service for service in services if service['name'] == obj_storage_config.identity_service_name]
+        swift_service = [service for service in services
+                         if service['name'] == os_service_name]
+
         swift_service = swift_service[0]
-        swift_endpoint = [endpoint for endpoint in swift_service['endpoints'] if endpoint['region'] == obj_storage_config.region]
+
+        swift_endpoint = [endpoint for endpoint in swift_service['endpoints']
+                          if endpoint['region'] == obj_storage_config.region]
 
         self.storage_url = swift_endpoint[0]['publicURL']
         self.auth_token =  r.json()['access']['token']['id']
@@ -53,9 +68,8 @@ class ObjectStorageComposite(object):
             config_file_path=config_file_path,
             section_name=ObjectStorageAPIConfig.SECTION_NAME)
 
-        # self.config = ObjectStorageAPIConfig()
-
         self.client = ObjectStorageAPIClient(self.storage_url, self.auth_token)
 
         self.behaviors = ObjectStorageAPI_Behaviors(
-            client=self.client, config=self.config)
+            client=self.client,
+            config=self.config)
