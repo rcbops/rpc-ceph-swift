@@ -19,14 +19,13 @@ BULK_ARCHIVE_NAME = 'bulk_objects'
 
 
 class ObjectStorageAPIClient(object):
-
     def __init__(self, storage_url, auth_token, base_container_name=None,
                  base_object_name=None):
         super(ObjectStorageAPIClient, self).__init__()
 
         # This should be passed in instead of being instantiated on its own
-        #self.engine_config = EngineConfig()
-        #self.temp_dir = expanduser(self.engine_config.temp_directory)
+        # self.engine_config = EngineConfig()
+        # self.temp_dir = expanduser(self.engine_config.temp_directory)
 
         # Temp hack
         self.temp_dir = expanduser('~/.temp')
@@ -40,7 +39,6 @@ class ObjectStorageAPIClient(object):
         self.default_headers = {
             'X-Auth-Token': self.auth_token,
             'Content-type': 'application/json',
-            #'Accept': 'application/json'
         }
         self._swift_features = None
 
@@ -117,7 +115,6 @@ class ObjectStorageAPIClient(object):
     def options(self, url, **kwargs):
         """ HTTP OPTIONS request """
         return self.request('OPTIONS', url, **kwargs)
-
 
     def get_swift_info(self, headers=None, params=None,
                        requestslib_kwargs=None):

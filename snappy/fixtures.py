@@ -9,8 +9,6 @@ import six
 import sys
 import unittest
 
- # from cafe.drivers.base import FixtureReporter
-
 
 class BaseTestFixture(unittest.TestCase):
     """
