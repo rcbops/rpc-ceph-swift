@@ -1,5 +1,5 @@
 import time
-from unittest import skipUnless
+import pytest
 
 from snappy.datasets import DatasetList
 from snappy.decorators import (DataDrivenFixture, data_driven_test)
@@ -930,8 +930,8 @@ class TempUrlTest(ObjectStorageFixture):
 
     @data_driven_test(sha_type)
     @ObjectStorageFixture.required_features('tempurl')
-    @skipUnless(get_value('tempurl-methods') == 'delete',
-                'tempurl must be configured to allow DELETE.')
+    @pytest.mark.skipif(get_value('tempurl-methods') != 'delete',
+                        reason='tempurl must be configured to allow DELETE.')
     def ddtest_tempurl_object_delete(self, sha_type=None):
         container_name = self.create_temp_container(BASE_CONTAINER_NAME)
 
@@ -989,7 +989,8 @@ class TempUrlTest(ObjectStorageFixture):
         self.assertEqual(get_response.status_code, 404)
 
     @data_driven_test(sha_type)
-    @skipUnless(get_value('slow') == 'true', 'sleep for key change')
+    @pytest.mark.skipif(get_value('slow') != 'true',
+                        reason='sleep for key change')
     @ObjectStorageFixture.required_features('tempurl')
     def ddtest_object_retrieval_with_two_tempurl_keys(self, sha_type=None):
         container_name = self.create_temp_container('temp_url')
