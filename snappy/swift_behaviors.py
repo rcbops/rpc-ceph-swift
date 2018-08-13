@@ -98,8 +98,10 @@ class ObjectStorageAPI_Behaviors(object):
             if success_func(function_response):
                 return function_response
 
-            self._log.info('Retry - HTTP request attempt {} failed '
-                           'success_func test.'.format(request_count))
+
+            # Still need to fix logging
+            # self._log.info('Retry - HTTP request attempt {} failed '
+            #                'success_func test.'.format(request_count))
 
             request_count += 1
             sleep(sleep_time)
