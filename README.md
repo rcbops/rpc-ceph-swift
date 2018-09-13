@@ -5,10 +5,10 @@ smoke, regression and feature tests for object storage.
 initial ground work to decafinize the existing object
 storage repo and port from unit test to pytest.
 
-tests are run using pytest's runner:
+# tests are run using pytest's runner:
 pytest --config=/path/to/configs/test.config -v --capture=no tests/
 
-example config:
+# example config:
 
 [user_auth_config]
 endpoint = https://staging.identity.api.rackspacecloud.com
@@ -62,3 +62,4 @@ identity_service_name = cloudFilesCDN
 max_ttl = 1576800000
 min_ttl = 900
 default_ttl = 259200
+
