@@ -10,7 +10,7 @@ pytest --config=/path/to/configs/test.config -v --capture=no tests/
 
 # example config:
 
-[user_auth_config]
+```[user_auth_config]
 endpoint = https://staging.identity.api.rackspacecloud.com
 strategy = rax_auth
 
@@ -61,5 +61,5 @@ identity_service_name = cloudFilesCDN
 [cdn_api]
 max_ttl = 1576800000
 min_ttl = 900
-default_ttl = 259200
+default_ttl = 259200```
 
