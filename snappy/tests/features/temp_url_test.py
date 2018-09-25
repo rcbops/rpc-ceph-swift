@@ -5,7 +5,7 @@ from snappy.datasets import DatasetList
 from snappy.decorators import (DataDrivenFixture, data_driven_test)
 
 from behest.client import HTTPClient
-from snappy.check_dict import get_value
+from snappy.tools.check_dict import get_value
 from snappy.constants import Constants
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
 

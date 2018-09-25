@@ -10,7 +10,7 @@ from time import time, mktime
 from urlparse import urlparse
 
 from snappy.tools import randomstring as randstring
-from md5hash import get_md5_hash
+from snappy.tools.md5hash import get_md5_hash
 
 from responses import AccountContainersList, ContainerObjectsList
 from deserialization_decorator import deserialize
