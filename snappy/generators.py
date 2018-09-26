@@ -4,9 +4,9 @@ from random import choice
 
 from hashlib import md5
 from unicode_helpers import UNICODE_BLOCKS, BLOCK_NAMES
-from datasets import DatasetList
+from snappy.common.datasets import DatasetList
 from swift_composite import ObjectStorageComposite
-from swift_config import ObjectStorageAPIConfig
+from configs.swift_config import ObjectStorageAPIConfig
 
 
 CONTENT_TYPES = {

@@ -4,7 +4,7 @@ import zlib
 from hashlib import md5
 import pytest
 
-from snappy.decorators import (DataDrivenFixture, data_driven_test)
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 from snappy.constants import Constants
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
 from snappy.generators import (ObjectDatasetList, CONTENT_TYPES)

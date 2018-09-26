@@ -1,8 +1,8 @@
 import time
 import pytest
 
-from snappy.datasets import DatasetList
-from snappy.decorators import (DataDrivenFixture, data_driven_test)
+from snappy.common.datasets import DatasetList
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 
 from behest.client import HTTPClient
 from snappy.tools.check_dict import get_value
