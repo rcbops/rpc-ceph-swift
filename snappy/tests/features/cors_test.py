@@ -1,5 +1,4 @@
-from snappy.decorators import data_driven_test
-from snappy.decorators import DataDrivenFixture
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 
 from behest.client import HTTPClient
 

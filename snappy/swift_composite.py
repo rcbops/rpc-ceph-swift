@@ -1,6 +1,6 @@
 from swift_behaviors import ObjectStorageAPI_Behaviors
 from os_client import ObjectStorageAPIClient
-from swift_config import (ObjectStorageAPIConfig, ObjectStorageConfig,
+from configs.swift_config import (ObjectStorageAPIConfig, ObjectStorageConfig,
                           UserAuthConfig, UserConfig)
 from behest.client import HTTPClient
 

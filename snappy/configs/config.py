@@ -1,4 +1,4 @@
-from data_interfaces import (
+from snappy.common.data_interfaces import (
     ConfigSectionInterface, _get_path_from_env)
 
 

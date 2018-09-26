@@ -1,8 +1,7 @@
 from calendar import timegm
 from time import gmtime, sleep
 
-from snappy.decorators import data_driven_test
-from snappy.decorators import DataDrivenFixture
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 
 from snappy.constants import Constants
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture

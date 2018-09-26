@@ -5,9 +5,9 @@ import inspect
 import re
 
 # from cafe.common.reporting import cclogging
-from datasets import DatasetList
+from snappy.common.datasets import DatasetList
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from config import DriverConfig
+from snappy.configs.config import DriverConfig
 
 
 DATA_DRIVEN_TEST_ATTR = "__data_driven_test_data__"

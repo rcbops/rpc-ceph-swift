@@ -1,7 +1,6 @@
-from snappy.decorators import data_driven_test
-from snappy.decorators import DataDrivenFixture
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from snappy.datasets import DatasetList
+from snappy.common.datasets import DatasetList
 
 CONTENT_TYPE_TEXT = "text/plain; charset=utf-8"
 CONTENT_TYPE_XML = "application/xml; charset=utf-8"

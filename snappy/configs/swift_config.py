@@ -1,4 +1,4 @@
-from data_interfaces import ConfigSectionInterface
+from snappy.common.data_interfaces import ConfigSectionInterface
 
 
 class ObjectStorageConfig(ConfigSectionInterface):

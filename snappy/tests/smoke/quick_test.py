@@ -1,5 +1,4 @@
-from snappy.decorators import (DataDrivenFixture, data_driven_test)
-from snappy.decorators import DataDrivenFixture
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 from snappy.generators import ObjectDatasetList
 from snappy.constants import Constants
 

@@ -1,8 +1,7 @@
 from snappy.tools import randomstring as randstring
-from snappy.decorators import data_driven_test
-from snappy.decorators import DataDrivenFixture
+from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from snappy.datasets import DatasetList
+from snappy.common.datasets import DatasetList
 
 CONTENT_TYPE_TEXT = 'text/plain; charset=UTF-8'
 STATUS_CODE_MSG = '{method} expected status code {expected}' \
