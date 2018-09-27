@@ -11,12 +11,15 @@ pytest --config=/path/to/configs/test.config -v --capture=no tests/
 # example config:
 
 ```[user_auth_config]
-endpoint = https://staging.identity.api.rackspacecloud.com
-strategy = rax_auth
+endpoint =
+strategy = keystone
 
 [user]
-username = <USER_NAME_STUB>
-api_key = <API_KEY_STUB>
+# username =
+# api_key =
+# password =
+# tenant_id =
+# tenant_name =
 
 [objectstorage]
 identity_service_name = cloudFiles
