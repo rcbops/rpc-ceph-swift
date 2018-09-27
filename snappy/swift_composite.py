@@ -62,7 +62,7 @@ class ObjectStorageComposite(object):
                           if endpoint['region'] == obj_storage_config.region]
 
         self.storage_url = swift_endpoint[0]['publicURL']
-        self.auth_token = json.oads(r.json())['access']['token']['id']
+        self.auth_token = json.loads(r.json())['access']['token']['id']
 
         self.config = ObjectStorageAPIConfig(
             config_file_path=config_file_path,
