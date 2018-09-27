@@ -51,7 +51,7 @@ class ObjectStorageComposite(object):
             username=user_config.username,
             api_key=user_config.api_key)
 
-        services = r.json()['access']['serviceCatalog']
+        services = json.loads(r.json())['access']['serviceCatalog']
 
         swift_service = [service for service in services
                          if service['name'] == os_service_name]
@@ -62,7 +62,7 @@ class ObjectStorageComposite(object):
                           if endpoint['region'] == obj_storage_config.region]
 
         self.storage_url = swift_endpoint[0]['publicURL']
-        self.auth_token =  r.json()['access']['token']['id']
+        self.auth_token = json.oads(r.json())['access']['token']['id']
 
         self.config = ObjectStorageAPIConfig(
             config_file_path=config_file_path,

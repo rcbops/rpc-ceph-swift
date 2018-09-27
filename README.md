@@ -64,5 +64,8 @@ identity_service_name = cloudFilesCDN
 [cdn_api]
 max_ttl = 1576800000
 min_ttl = 900
-default_ttl = 259200```
+default_ttl = 259200
+```
+
+
 
