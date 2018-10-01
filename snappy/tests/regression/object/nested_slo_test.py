@@ -1,8 +1,8 @@
 import json
 
-from snappy.constants import Constants
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from snappy.generators import ObjectStorageGenerator
+from snappy.swift_constants import Constants
+from snappy.swift_fixtures import ObjectStorageFixture
+from snappy.swift_generators import ObjectStorageGenerator
 
 CONTAINER_DESCRIPTOR = 'nested_slo_test_container'
 STATUS_CODE_MSG = ('{method} expected status code {expected}'

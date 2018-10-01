@@ -1,4 +1,4 @@
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_fixtures import ObjectStorageFixture
 
 CONTENT_TYPE_TEXT = 'text/plain; charset=UTF-8'
 CONTAINER_NAME = 'container_obj_count_test'

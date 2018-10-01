@@ -1,4 +1,4 @@
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_fixtures import ObjectStorageFixture
 import snappy.tools.randomstring as randstring
 
 CONTENT_TYPE_TEXT = 'text/plain; charset=UTF-8'

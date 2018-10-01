@@ -3,10 +3,10 @@ from time import gmtime, sleep
 
 from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 
-from snappy.constants import Constants
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_constants import Constants
+from snappy.swift_fixtures import ObjectStorageFixture
 
-from snappy.generators import ObjectDatasetList
+from snappy.swift_generators import ObjectDatasetList
 
 CONTAINER_DESCRIPTOR = 'expiring_object_test'
 STATUS_CODE_MSG = ('{method} expected status code {expected}'

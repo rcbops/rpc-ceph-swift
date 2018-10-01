@@ -1,5 +1,5 @@
 from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_fixtures import ObjectStorageFixture
 from snappy.common.datasets import DatasetList
 
 CONTENT_TYPE_TEXT = "text/plain; charset=utf-8"

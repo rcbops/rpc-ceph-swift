@@ -5,6 +5,7 @@ from six.moves import configparser
 from six import add_metaclass
 
 import cclogging
+
 try:
     from cafe.engine.mongo.client import BaseMongoClient
 except:
@@ -12,7 +13,6 @@ except:
     The mongo data-source is currently not being used. and needs to be
     abstracted out into a data-source plugin.
     """
-
     pass
 
 

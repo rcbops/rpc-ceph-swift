@@ -1,4 +1,4 @@
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_fixtures import ObjectStorageFixture
 import pytest
 
 STATUS_CODE_MSG = ("{method} expected status code {expected}"
