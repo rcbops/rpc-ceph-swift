@@ -6,8 +6,8 @@ from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
 
 from behest.client import HTTPClient
 from snappy.tools.check_dict import get_value
-from snappy.constants import Constants
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_constants import Constants
+from snappy.swift_fixtures import ObjectStorageFixture
 
 
 BASE_CONTAINER_NAME = 'tempurl'

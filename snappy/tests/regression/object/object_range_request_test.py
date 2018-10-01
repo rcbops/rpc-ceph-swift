@@ -1,8 +1,8 @@
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_fixtures import ObjectStorageFixture
 
-from snappy.constants import Constants
+from snappy.swift_constants import Constants
 from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
-from snappy.generators import ObjectDatasetList
+from snappy.swift_generators import ObjectDatasetList
 
 
 CONTAINER_NAME = 'object_range_request_test_container'

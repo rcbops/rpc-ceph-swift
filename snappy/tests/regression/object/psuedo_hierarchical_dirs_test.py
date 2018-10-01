@@ -1,8 +1,8 @@
 import json
 
 from snappy.tools import randomstring as randstring
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from snappy.constants import Constants
+from snappy.swift_fixtures import ObjectStorageFixture
+from snappy.swift_constants import Constants
 
 CONTENT_TYPE_TEXT = "text/plain; charset=UTF-8"
 CONTAINER_NAME = "psuedo_dirs_test"

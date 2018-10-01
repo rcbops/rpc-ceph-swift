@@ -1,6 +1,6 @@
 import json
 
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_fixtures import ObjectStorageFixture
 
 CONTENT_TYPE_TEXT = 'text/plain; charset=UTF-8'
 CONTAINER_NAME = 'list_limit_test_container'

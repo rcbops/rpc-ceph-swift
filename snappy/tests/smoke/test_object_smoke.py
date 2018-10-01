@@ -5,9 +5,9 @@ from hashlib import md5
 import pytest
 
 from snappy.common.decorators import (DataDrivenFixture, data_driven_test)
-from snappy.constants import Constants
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from snappy.generators import (ObjectDatasetList, CONTENT_TYPES)
+from snappy.swift_constants import Constants
+from snappy.swift_fixtures import ObjectStorageFixture
+from snappy.swift_generators import (ObjectDatasetList, CONTENT_TYPES)
 
 CONTAINER_DESCRIPTOR = 'object_smoke_test'
 STATUS_CODE_MSG = ('{method} expected status code {expected}'

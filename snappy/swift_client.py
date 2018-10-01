@@ -12,7 +12,7 @@ from urlparse import urlparse
 from snappy.tools import randomstring as randstring
 from snappy.tools.md5hash import get_md5_hash
 
-from responses import AccountContainersList, ContainerObjectsList
+from swift_models import AccountContainersList, ContainerObjectsList
 from snappy.common.deserialization_decorator import deserialize
 
 BULK_ARCHIVE_NAME = 'bulk_objects'

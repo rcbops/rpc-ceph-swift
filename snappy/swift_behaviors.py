@@ -12,8 +12,8 @@ from time import sleep, time
 
 from snappy.tools.unicode_helpers import (UNICODE_BLOCKS, BLOCK_NAMES)
 from snappy.tools.md5hash import get_md5_hash
-from os_client import ObjectStorageAPIClient
-from constants import Constants
+from swift_client import ObjectStorageAPIClient
+from snappy.swift_constants import Constants
 
 
 class ObjectStorageAPIBehaviorException(Exception):

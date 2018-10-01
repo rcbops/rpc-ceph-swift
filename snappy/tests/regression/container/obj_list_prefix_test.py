@@ -1,7 +1,7 @@
 import json
 
-from snappy.constants import Constants
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
+from snappy.swift_constants import Constants
+from snappy.swift_fixtures import ObjectStorageFixture
 
 CONTENT_TYPE_TEXT = "text/plain; charset=UTF-8"
 CONTAINER_NAME = "delimiter_test"

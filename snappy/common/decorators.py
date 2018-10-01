@@ -1,13 +1,12 @@
 from importlib import import_module
 from unittest import TestCase
 from warnings import warn, simplefilter
-import inspect
 import re
 
-# from cafe.common.reporting import cclogging
+import cclogging
 from snappy.common.datasets import DatasetList
-from snappy.fixtures.swift_fixtures import ObjectStorageFixture
-from snappy.configs.config import DriverConfig
+from snappy.swift_fixtures import ObjectStorageFixture
+from snappy.common.driver import DriverConfig
 
 
 DATA_DRIVEN_TEST_ATTR = "__data_driven_test_data__"
@@ -138,31 +137,31 @@ def DataDrivenClass(*dataset_lists):
         unittest_driver_config = DriverConfig()
 
         for i, dataset_list in enumerate(dataset_lists):
-            # if (not dataset_list and
-            #    not unittest_driver_config.ignore_empty_datasets):
-            #     # The DSL did not generate anything
-            #     class_name_new = "{class_name}_{exception}_{index}".format(
-            #         class_name=class_name,
-            #         exception="DSL_EXCEPTION",
-            #         index=i)
-            #     # We are creating a new, special class here that willd allow us
-            #     # to force an error during test set up that contains
-            #     # information useful for triaging the DSL failure.
-            #     # Additionally this should surface any tests that did not run
-            #     # due to the DSL issue.
-            #     new_cls = DataDrivenFixture(_FauxDSLFixture)
-            #     new_class = type(
-            #         class_name_new,
-            #         (new_cls,),
-            #         {})
-            #     dsl_namespace = cclogging.get_object_namespace(
-            #         dataset_list.__class__)
-            #     test_ls = [test for test in dir(cls) if test.startswith(
-            #         'test_') or test.startswith(DATA_DRIVEN_TEST_PREFIX)]
-            #     new_class.dsl_namespace = dsl_namespace
-            #     new_class.original_test_list = test_ls
-            #     new_class.__module__ = cls.__module__
-            #     setattr(module, class_name_new, new_class)
+            if (not dataset_list and
+               not unittest_driver_config.ignore_empty_datasets):
+                # The DSL did not generate anything
+                class_name_new = "{class_name}_{exception}_{index}".format(
+                    class_name=class_name,
+                    exception="DSL_EXCEPTION",
+                    index=i)
+                # We are creating a new, special class here that willd allow us
+                # to force an error during test set up that contains
+                # information useful for triaging the DSL failure.
+                # Additionally this should surface any tests that did not run
+                # due to the DSL issue.
+                new_cls = DataDrivenFixture(_FauxDSLFixture)
+                new_class = type(
+                    class_name_new,
+                    (new_cls,),
+                    {})
+                dsl_namespace = cclogging.get_object_namespace(
+                    dataset_list.__class__)
+                test_ls = [test for test in dir(cls) if test.startswith(
+                    'test_') or test.startswith(DATA_DRIVEN_TEST_PREFIX)]
+                new_class.dsl_namespace = dsl_namespace
+                new_class.original_test_list = test_ls
+                new_class.__module__ = cls.__module__
+                setattr(module, class_name_new, new_class)
             for dataset in dataset_list:
                 class_name_new = "{0}_{1}".format(class_name, dataset.name)
                 new_class = type(class_name_new, (cls,), dataset.data)
@@ -258,47 +257,45 @@ class memoized(object):
         self.__name__ = func.__name__
 
     def __call__(self, *args):
-        # log_name = "{0}.{1}".format(
-        #     cclogging.get_object_namespace(args[0]), self.__name__)
-        # self._start_logging(log_name)
-        #
-        # try:
-        #     hash(args)
-        # except TypeError:  # unhashable arguments in args
-        #     value = self.func(*args)
-        #     debug = "Uncacheable.  Data returned"
-        # else:
-        #     if args in self.cache:
-        #         value = self.cache[args]
-        #         debug = "Cached data returned."
-        #     else:
-        #         value = self.cache[args] = self.func(*args)
-        #         debug = "Data cached for future calls"
-        #
-        # self.func._log.debug(debug)
-        # self._stop_logging()
-        # return value
-        pass
+        log_name = "{0}.{1}".format(
+            cclogging.get_object_namespace(args[0]), self.__name__)
+        self._start_logging(log_name)
+
+        try:
+            hash(args)
+        except TypeError:  # unhashable arguments in args
+            value = self.func(*args)
+            debug = "Uncacheable.  Data returned"
+        else:
+            if args in self.cache:
+                value = self.cache[args]
+                debug = "Cached data returned."
+            else:
+                value = self.cache[args] = self.func(*args)
+                debug = "Data cached for future calls"
+
+        self.func._log.debug(debug)
+        self._stop_logging()
+        return value
 
     def __repr__(self):
         """Return the function's docstring."""
         return self.func.__doc__
 
     def _start_logging(self, log_file_name):
-        # """Starts logging"""
-        # setattr(self.func, '_log_handler', cclogging.setup_new_cchandler(
-        #     log_file_name))
-        # setattr(self.func, '_log', cclogging.getLogger(''))
-        # self.func._log.addHandler(self.func._log_handler)
-        # try:
-        #     curframe = inspect.currentframe()
-        #     self.func._log.debug("{0} called from {1}".format(
-        #         self.__name__, inspect.getouterframes(curframe, 2)[2][3]))
-        # except:
-        #     self.func._log.debug(
-        #         "Unable to log where {0} was called from".format(
-        #             self.__name__))
-        pass
+        """Starts logging"""
+        setattr(self.func, '_log_handler', cclogging.setup_new_cchandler(
+            log_file_name))
+        setattr(self.func, '_log', cclogging.getLogger(''))
+        self.func._log.addHandler(self.func._log_handler)
+        try:
+            curframe = inspect.currentframe()
+            self.func._log.debug("{0} called from {1}".format(
+                self.__name__, inspect.getouterframes(curframe, 2)[2][3]))
+        except:
+            self.func._log.debug(
+                "Unable to log where {0} was called from".format(
+                    self.__name__))
 
     def _stop_logging(self):
         """Stop logging"""

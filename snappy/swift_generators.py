@@ -6,7 +6,7 @@ from hashlib import md5
 from snappy.tools.unicode_helpers import (UNICODE_BLOCKS, BLOCK_NAMES)
 from snappy.common.datasets import DatasetList
 from swift_composite import ObjectStorageComposite
-from configs.swift_config import ObjectStorageAPIConfig
+from swift_config import ObjectStorageAPIConfig
 
 
 CONTENT_TYPES = {
