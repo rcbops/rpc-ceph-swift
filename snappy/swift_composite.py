@@ -1,6 +1,6 @@
-from swift_behaviors import ObjectStorageAPI_Behaviors
-from os_client import ObjectStorageAPIClient
-from configs.swift_config import (ObjectStorageAPIConfig, ObjectStorageConfig,
+from snappy.swift_behaviors import ObjectStorageAPI_Behaviors
+from snappy.swift_client import ObjectStorageAPIClient
+from snappy.swift_config import (ObjectStorageAPIConfig, ObjectStorageConfig,
                           UserAuthConfig, UserConfig)
 from behest.client import HTTPClient
 

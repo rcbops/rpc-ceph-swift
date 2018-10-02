@@ -11,6 +11,7 @@ def pytest_addoption(parser):
         help='The configuration file to use for this test run.'
     )
 
+
 def pytest_configure(config):
     if config.getoption('config_file'):
         _set_config_file(config.getoption('config_file'))
