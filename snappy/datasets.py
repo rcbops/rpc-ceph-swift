@@ -1,6 +1,7 @@
 from itertools import product
 from string import ascii_letters, digits
 import json
+import collections
 
 ALLOWED_FIRST_CHAR = "_{0}".format(ascii_letters)
 ALLOWED_OTHER_CHARS = "{0}{1}".format(ALLOWED_FIRST_CHAR, digits)
@@ -63,17 +64,20 @@ class DatasetList(list):
 
     def dataset_name_map(self):
         """Creates a dictionary with key=count and value=dataset name"""
-        return {count: ds.name for count, ds in enumerate(self)}
+        kv = collections.defaultdict([])
+        for count, ds in enumerate(self):
+            kv[ds.name].append(count)
+        return kv
 
     def merge_dataset_tags(self, *dataset_lists):
         local_name_map = self.dataset_name_map()
         for dsl in dataset_lists:
             for foreign_ds in dsl:
-                for location, name in local_name_map.items():
-                    if name == foreign_ds.name:
-                        self[location].metadata['tags'] = list(
-                            set(self[location].metadata.get('tags')).union(
-                                foreign_ds.metadata.get('tags')))
+                if local_name_map.get(foreign_ds.name):
+                    locations = local_name_map.get(foreign_ds.name)
+                    new_tag = list(set().union([self[i].metadata.get('tags') for i in locations] + [foreign_ds.metadata.get('tags')]))
+                    for location in locations:
+                        self[location].metadata['tags'] = new_tag
 
     @staticmethod
     def replace_invalid_characters(string, new_char="_"):
