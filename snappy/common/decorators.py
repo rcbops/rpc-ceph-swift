@@ -1,9 +1,11 @@
+import re
+import inspect
+import cclogging
+
 from importlib import import_module
 from unittest import TestCase
 from warnings import warn, simplefilter
-import re
 
-import cclogging
 from snappy.common.datasets import DatasetList
 from snappy.swift_fixtures import ObjectStorageFixture
 from snappy.common.driver import DriverConfig

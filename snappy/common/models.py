@@ -1,4 +1,6 @@
 import cclogging
+import six
+
 
 class BaseModel(object):
     __REPR_SEPARATOR__ = '\n'

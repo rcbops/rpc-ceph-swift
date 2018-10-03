@@ -1,7 +1,7 @@
 from snappy.swift_behaviors import ObjectStorageAPI_Behaviors
 from snappy.swift_client import ObjectStorageAPIClient
 from snappy.swift_config import (ObjectStorageAPIConfig, ObjectStorageConfig,
-                          UserAuthConfig, UserConfig)
+                                 UserAuthConfig, UserConfig)
 from behest.client import HTTPClient
 
 import json
@@ -24,7 +24,6 @@ class ObjectStorageComposite(object):
                     }
                 }
             }
-
             body = json.dumps(content)
             response = client.request(
                 "POST",
@@ -38,7 +37,7 @@ class ObjectStorageComposite(object):
         user_auth_config = UserAuthConfig(
             config_file_path=config_file_path,
             section_name=UserAuthConfig.SECTION_NAME)
-        
+
         user_config = UserConfig(
             config_file_path=config_file_path,
             section_name=UserConfig.SECTION_NAME)
@@ -51,7 +50,7 @@ class ObjectStorageComposite(object):
             username=user_config.username,
             api_key=user_config.api_key)
 
-        services = json.loads(r.json())['access']['serviceCatalog']
+        services = r.json()['access']['serviceCatalog']
 
         swift_service = [service for service in services
                          if service['name'] == os_service_name]
@@ -62,7 +61,7 @@ class ObjectStorageComposite(object):
                           if endpoint['region'] == obj_storage_config.region]
 
         self.storage_url = swift_endpoint[0]['publicURL']
-        self.auth_token = json.loads(r.json())['access']['token']['id']
+        self.auth_token = r.json()['access']['token']['id']
 
         self.config = ObjectStorageAPIConfig(
             config_file_path=config_file_path,

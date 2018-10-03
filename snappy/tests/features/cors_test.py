@@ -180,7 +180,8 @@ class CORSTest(ObjectStorageFixture):
 
         headers = formpost_info.get('headers')
         headers['Origin'] = 'http://example.com'
-        response = self.dumb_client.request("POST",
+        response = self.dumb_client.request(
+            "POST",
             formpost_info.get('target_url'),
             headers=headers,
             data=formpost_info.get('body'),
@@ -220,7 +221,8 @@ class CORSTest(ObjectStorageFixture):
 
             headers = formpost_info.get('headers')
             headers['Origin'] = 'http://foo.com'
-            response = self.dumb_client.request("POST",
+            response = self.dumb_client.request(
+                "POST",
                 formpost_info.get('target_url'),
                 headers=headers,
                 data=formpost_info.get('body'),

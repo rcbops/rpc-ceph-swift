@@ -12,7 +12,6 @@ from time import sleep, time
 
 from snappy.tools.unicode_helpers import (UNICODE_BLOCKS, BLOCK_NAMES)
 from snappy.tools.md5hash import get_md5_hash
-from snappy.swift_client import ObjectStorageAPIClient
 from snappy.swift_constants import Constants
 
 
@@ -97,7 +96,6 @@ class ObjectStorageAPI_Behaviors(object):
             # Check the response with the success function
             if success_func(function_response):
                 return function_response
-
 
             # Still need to fix logging
             # self._log.info('Retry - HTTP request attempt {} failed '
