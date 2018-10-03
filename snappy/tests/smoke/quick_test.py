@@ -5,6 +5,7 @@ from snappy.swift_constants import Constants
 
 from snappy.swift_fixtures import ObjectStorageFixture
 
+
 @DataDrivenFixture
 class QuickTest(ObjectStorageFixture):
     def test_create_container(self):

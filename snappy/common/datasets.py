@@ -75,7 +75,11 @@ class DatasetList(list):
             for foreign_ds in dsl:
                 if local_name_map.get(foreign_ds.name):
                     locations = local_name_map.get(foreign_ds.name)
-                    new_tag = list(set().union([self[i].metadata.get('tags') for i in locations] + [foreign_ds.metadata.get('tags')]))
+                    new_tag = list(
+                        set().union(
+                            [self[i].metadata.get('tags')
+                             for i in locations] +
+                            [foreign_ds.metadata.get('tags')]))
                     for location in locations:
                         self[location].metadata['tags'] = new_tag
 
